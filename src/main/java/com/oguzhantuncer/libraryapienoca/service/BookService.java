@@ -18,7 +18,7 @@ public class BookService {
 
     private final BookRepository bookRepository;
 
-    public BookService(BookRepository bookRepository){
+    public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 
@@ -29,18 +29,23 @@ public class BookService {
         if (existingBook.isPresent()) {
             log.error("BookService.save is failed with request: {} ", request);
             throw new BusinessException("book.already.exists");
-        } else {
-            Book book = Book.toEntity(request);
-            log.info("BookService.save is completed with request: {} ", request);
-            return bookRepository.save(book);
         }
+        Book book = new Book();
+        book.setName(request.getName());
+        book.setAuthor(request.getAuthor());
+        book.setIsbnNumber(request.getIsbnNumber());
+        book.setPublisher(request.getPublisher());
+        book.setNumberOfEditions(request.getNumberOfEditions());
+        log.info("BookService.save is completed with request: {} ", request);
+        return bookRepository.save(book);
+
     }
 
 
     public Book update(Long id, BookRequest request) {
         log.info("BookService.update is started with id: {} and request: {} ", id, request);
         Optional<Book> byId = bookRepository.findById(id);
-        if(byId.isEmpty()){
+        if (byId.isEmpty()) {
             log.error("BookService.update is failed with id: {} and request: {} ", id, request);
             throw new DomainNotFoundException("book.not.found");
         }

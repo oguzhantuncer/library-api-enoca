@@ -31,13 +31,4 @@ public class Book implements Serializable {
     @Column(name = "number_of_editions")
     private String numberOfEditions;
 
-    public static Book toEntity(BookRequest request) {
-        Book book = new Book();
-        book.setName(request.getName());
-        book.setAuthor(request.getAuthor());
-        book.setIsbnNumber(request.getIsbnNumber());
-        book.setPublisher(request.getPublisher());
-        book.setNumberOfEditions(request.getNumberOfEditions());
-        return book;
-    }
 }

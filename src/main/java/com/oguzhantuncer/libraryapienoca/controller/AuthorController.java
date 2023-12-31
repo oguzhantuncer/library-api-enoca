@@ -34,7 +34,7 @@ public class AuthorController {
     }
 
     @GetMapping("/")
-    public Author getAuthorByNameAndSurname(@RequestParam String name,@RequestParam String surname) {
+    public Author getAuthorByNameAndSurname(@RequestParam String name, @RequestParam String surname) {
         return authorService.getAuthorByNameAndSurname(name, surname);
     }
 

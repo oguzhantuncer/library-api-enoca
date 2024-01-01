@@ -98,5 +98,5 @@ Bağımlılıkları Yükleyin
 Uygulamayı Çalıştırın
 ```bash
 cd build/libs
-java -jar library-api-0.0.1-SNAPSHOT.jar
+java -jar library-api-enoca-0.0.1-SNAPSHOT.jar
 ```
